@@ -1,0 +1,15 @@
+{
+    "name": "paulknebel/uk-audio-services-api",
+    "description": "API Integration Bundle",
+    "type": "library",
+    "authors": [
+        {
+            "name": "paulknebel",
+            "email": "paul.knebel@bauermedia.co.uk"
+        }
+    ],
+    "require": {},
+    "scripts": {
+        "generate": "./generate.sh"
+    }
+}

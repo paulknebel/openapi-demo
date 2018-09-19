@@ -1,0 +1,71 @@
+swagger: "2.0.0"
+info:
+    title: Listen API Overview
+    version: 0.1.0
+servers:
+  - url: https://listenapi.planetradio.co.uk/api9.1/
+    description: Production server
+  - url: https://stagingapi.planetradio.co.uk/api9.1/
+    description: Staging server
+  - url: http://listen.test/api9.1/
+    description: Local server
+
+externalDocs:
+  url: https://bauer-specialist.atlassian.net/wiki/spaces/AUD/pages/109564181
+  description: Confluence documentation (manually written)
+
+paths:
+    /stationlist:
+        get:
+            operationId: getStations
+            summary: Return a list of stations
+            produces:
+            - application/json
+            parameters:
+            -   name: AppCode
+                in: query
+                description: Filter by stations belonging to Application
+                type: array
+                items:
+                    type: string
+                required: false
+#            -   name: stationBearers
+#                in: query
+#                description: Filter stations by Bearer type (?)
+#                type: enum[FM,DAB]
+            -   name: StationId
+                in: query
+                type: array
+                items:
+                    type: integer
+            -   name: StationType
+                type: array
+                items:
+                    type: enum[radio,box set,television]
+            responses:
+              200:
+                  description: Hello world
+                  content:
+                      schema:
+                          $ref: '#/components/schemas/Station'
+
+components:
+    schemas:
+        Station:
+            type: object
+            properties:
+                stationId:
+                    type: integer
+                stationCode:
+                    type: string
+                stationName:
+                    type: string
+                stationType:
+                    type: enum[radio,box set,tv]
+                stationRegion:
+                    type: enum[GB,DK,NO,FI]
+                stationBrandCode:
+                    type: string
+                stationBrandId:
+                    type: string
+
